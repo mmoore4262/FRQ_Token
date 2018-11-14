@@ -32,17 +32,20 @@ public class TokenPass {
         int j=0;
         for (int i=0; i<tokensToDistribute; i++)
          {
+             
              try
              {
                  board[currentPlayer+1]=0;
              }
              catch (ArrayIndexOutOfBoundsException e)
              {
+
                  board[j]++;
                  j++;
 
              }
              board[currentPlayer+1]++;
+
          }
 
 

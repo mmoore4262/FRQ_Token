@@ -1,7 +1,7 @@
 public class Runner {
     public static void main(String[] args)
     {
-        TokenPass game1= new TokenPass(9);
+        TokenPass game1= new TokenPass(4);
 
         while(game1.gameOver()<0)
         {
