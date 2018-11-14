@@ -2,7 +2,7 @@ public class TokenPass {
     private int[] board;
     private int currentPlayer;
     private int playerCount;
-    int winner = -1;
+    //int winner = -1;
 
     public TokenPass (int playerCount)
     {
@@ -30,7 +30,7 @@ public class TokenPass {
         int tokensToDistribute=board[currentPlayer];
         board[currentPlayer]=0;
         int j=0;
-         for (int i=0; i<tokensToDistribute; i++)
+        for (int i=0; i<tokensToDistribute; i++)
          {
              try
              {
@@ -40,21 +40,33 @@ public class TokenPass {
              {
                  board[j]++;
                  j++;
+
              }
+             board[currentPlayer+1]++;
          }
+
 
     }
 
     public int gameOver()
     {
-        return winner;
+
+        for (int i=0; i<board.length; i++)
+        {
+            if (board[i]==0)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
     public void printBoard()
     {
-        for (int i=0; i<playerCount; i++)
+        for (int i=0; i<board.length; i++)
         {
             System.out.println("Player "+i+" : "+board[i]);
         }
+        System.out.println("");
 
     }
 }
