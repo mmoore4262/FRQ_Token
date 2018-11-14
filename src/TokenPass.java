@@ -2,6 +2,7 @@ public class TokenPass {
     private int[] board;
     private int currentPlayer;
     private int playerCount;
+    int winner = -1;
 
     public TokenPass (int playerCount)
     {
@@ -12,17 +13,48 @@ public class TokenPass {
             board[i]=(int)(Math.random()*10);
         }
     }
-    public void distributeCurrentPlayerTokens(int currentPlayer, int [] board)
+    public void distributeCurrentPlayerTokens()
     {
-        int stor=board[currentPlayer];
-        int j=1;
-        for (int i=1;i<stor; i++)
+        /**int nextPlayer=currentPlayer;
+        int tokensToDistribute=board[currentPlayer];
+        board[currentPlayer]=0;
+
+        while (tokensToDistribute>0)
         {
-            if (board[currentPlayer+i])
+            nextPlayer=(nextPlayer+1)%board.length;
+            board[nextPlayer]++;
+            tokensToDistribute--;
 
-            {
+        }**/
 
-            }
+        int tokensToDistribute=board[currentPlayer];
+        board[currentPlayer]=0;
+        int j=0;
+         for (int i=0; i<tokensToDistribute; i++)
+         {
+             try
+             {
+                 board[currentPlayer+1]=0;
+             }
+             catch (ArrayIndexOutOfBoundsException e)
+             {
+                 board[j]++;
+                 j++;
+             }
+         }
+
+    }
+
+    public int gameOver()
+    {
+        return winner;
+    }
+    public void printBoard()
+    {
+        for (int i=0; i<playerCount; i++)
+        {
+            System.out.println("Player "+i+" : "+board[i]);
         }
+
     }
 }
